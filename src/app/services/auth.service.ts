@@ -22,7 +22,7 @@ export class AuthService {
 
   login(email: string, password: string) {
     return from(signInWithEmailAndPassword(this.auth, email, password));
-  }
+  } //con from() si crea un observable a partire da una promise
 
   logout() {
     return from(signOut(this.auth));
