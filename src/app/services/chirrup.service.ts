@@ -25,13 +25,20 @@ export class ChirrupService {
     const user = this.authService.user();
     if (!user) return;
 
-    const chirrup: Chirrup = {
+    const chirrup: any = {
       text,
       userId: user.uid,
       userEmail: user.email || '',
-      createdAt: new Date(),
-      location
+      createdAt: new Date()
     };
+
+    if (location) {
+      chirrup.location = {
+        lat: location.lat,
+        lng: location.lng
+      };
+    }
+
 
     const chirrupRef = collection(this.firestore, 'chirrups');
     await addDoc(chirrupRef, chirrup);

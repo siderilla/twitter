@@ -1,1 +1,3 @@
-<p>chirrup-list works!</p>
+    <button mat-raised-button color="primary" (click)="logout()">Logout</button>
+    <div *ngIf="chirrupList.length === 0">
+        <p>Non ci sono chirrup disponibili.</p>
