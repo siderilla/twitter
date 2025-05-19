@@ -28,3 +28,8 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 ======================================================================================
 
 --- aggiusta la modularizzazione dei componenti e la UI/UX
+--- collection di users + cinguettii
+
+1) quando l'utente è loggato nella navbar: ciao, nomeutente!
+2) inserire una guard nella root che non faccia loggare né in login né in register
+3) fatelo bello ONIICHAN
