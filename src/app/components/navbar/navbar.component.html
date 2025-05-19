@@ -1,0 +1,10 @@
+<div class="navbar">
+    <div class="navbar-actions">
+        @if (!authService.isAuthorized()) {
+            <button mat-button (click)="login()">Login</button>
+        } @else {
+            <button mat-button (click)="logout()">Logout</button>
+        }
+        <button mat-button (click)="register()">Register</button>
+    </div>
+</div>

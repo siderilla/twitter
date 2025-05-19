@@ -2,6 +2,10 @@
 
 <div class="form-container">
     <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input [(ngModel)]="username" matInput type="text" />
+    </mat-form-field>
+    <mat-form-field>
         <mat-label>E-mail</mat-label>
         <input [(ngModel)]="email" matInput type="email" />
     </mat-form-field>
@@ -14,7 +18,5 @@
     <div *ngIf="errorMessage" class="error-message">
         {{ errorMessage }}
     </div>
-
-    <button mat-raised-button color="primary" (click)="login()">Login</button>
     <button mat-raised-button color="warn" (click)="register()">Register</button>
 </div>

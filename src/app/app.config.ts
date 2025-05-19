@@ -7,16 +7,26 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 import { routes } from './app.routes';
 
-const firebaseConfig = { //serve per la connessione a Firebase
 
-  apiKey: "AIzaSyB5ALX7plUke7_JKaV0PW_Lh5ABEQlfA3A", //chiave API
-  authDomain: "chirrup-611ca.firebaseapp.com", //dominio di autenticazione
-  projectId: "chirrup-611ca", //ID del progetto
-  storageBucket: "chirrup-611ca.firebasestorage.app", //bucket di archiviazione
-  messagingSenderId: "935604106597", //ID del mittente dei messaggi
-  appId: "1:935604106597:web:3dffef26ba4da179ba5d8c" //ID dell'app
-
+const firebaseConfig = {
+  apiKey: "AIzaSyA7ymoFr6ZVE0AEy-SNkrpLws95vcMq-cc",
+  authDomain: "cinguetto-69d31.firebaseapp.com",
+  projectId: "cinguetto-69d31",
+  storageBucket: "cinguetto-69d31.firebasestorage.app",
+  messagingSenderId: "1001473759556",
+  appId: "1:1001473759556:web:6027bafeb24555a1f99f11"
 };
+
+// const firebaseConfig = { //serve per la connessione a Firebase
+
+//   apiKey: "AIzaSyB5ALX7plUke7_JKaV0PW_Lh5ABEQlfA3A", //chiave API
+//   authDomain: "chirrup-611ca.firebaseapp.com", //dominio di autenticazione
+//   projectId: "chirrup-611ca", //ID del progetto
+//   storageBucket: "chirrup-611ca.firebasestorage.app", //bucket di archiviazione
+//   messagingSenderId: "935604106597", //ID del mittente dei messaggi
+//   appId: "1:935604106597:web:3dffef26ba4da179ba5d8c" //ID dell'app
+
+// };
 
 
 export const appConfig: ApplicationConfig = { //inizializza l'applicazione Angular

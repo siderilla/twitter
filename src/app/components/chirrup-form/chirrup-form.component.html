@@ -6,12 +6,12 @@
     <p *ngIf="!authService.user()">
         Per favore, accedi per continuare.
     </p>
-    <button mat-raised-button color="primary" (click)="logout()">Logout</button>
 </div>
 <div class="add-chirrup">
     <mat-form-field>
         <mat-label>Chirp chirp</mat-label>
-        <textarea matInput></textarea>
+        <textarea matInput [(ngModel)]="chirrup"></textarea> 
+        <!-- ngModel chiama chirrup per visualizzare il testo bananainthebox è input/output -->
     </mat-form-field>
     <button mat-raised-button color="primary" (click)="addChirrup()">Post</button>
 </div>

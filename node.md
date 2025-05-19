@@ -25,4 +25,6 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 - si usa quando si vuole scrivere un servizio reattivo, pulito e idiomatico
 
+======================================================================================
 
+--- aggiusta la modularizzazione dei componenti e la UI/UX

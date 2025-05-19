@@ -8,7 +8,7 @@ export const AuthGuard: CanActivateFn = () => {
     const authService = inject(AuthService);
 
     // Blocca l'accesso finché sta caricando lo stato auth
-    if (!authService.loading() && !authService.user()) {
+    if (!authService.isAuthorized() && !authService.user()) {
         router.navigate(['/login']);
         return false;
     }

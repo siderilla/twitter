@@ -1,22 +1,26 @@
 import { Injectable, signal } from '@angular/core';
-import { Firestore, collectionData, collection, addDoc, query, orderBy } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, addDoc, query, orderBy, Timestamp } from '@angular/fire/firestore';
 import { inject } from '@angular/core';
 import { Chirrup } from '../models/chirrup';
 import { AuthService } from './auth.service';
+import { LocationService } from './location.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChirrupService {
+
   private firestore = inject(Firestore);
   private authService = inject(AuthService);
+  private locationService = inject(LocationService);
+
   chirrups = signal<Chirrup[]>([]);
 
   constructor() {
-    const chirrupRef = collection(this.firestore, 'chirrups');
-    const chirrupQuery = query(chirrupRef, orderBy('createdAt', 'desc'));
+    const chirrupRef = collection(this.firestore, 'cinguettii');
+    // const chirrupQuery = query(chirrupRef, orderBy('createdAt', 'desc'));
 
-    collectionData(chirrupQuery, { idField: 'id' }).subscribe(data => {
+    collectionData(chirrupRef, { idField: 'id' }).subscribe(data => {
       this.chirrups.set(data as Chirrup[]);
     });
   }
@@ -26,21 +30,33 @@ export class ChirrupService {
     if (!user) return;
 
     const chirrup: any = {
-      text,
+      text: text,
       userId: user.uid,
       userEmail: user.email || '',
-      createdAt: new Date()
+      creationTime: Timestamp.now()
     };
 
-    if (location) {
-      chirrup.location = {
-        lat: location.lat,
-        lng: location.lng
-      };
-    }
+    this.locationService.getLocation()
+      .then((location) => {
+        chirrup.location = {
+          lat: location.coords.latitude,
+          lng: location.coords.longitude
+        };
+        console.log('Location:', chirrup.location);
+      })
+      .catch((error) => {
+        console.error('Error getting location', error);
+      });
+
+    // if (location) {
+    //   chirrup.location = {
+    //     lat: location.lat,
+    //     lng: location.lng
+    //   };
+    // }
 
 
-    const chirrupRef = collection(this.firestore, 'chirrups');
+    const chirrupRef = collection(this.firestore, 'cinguettii');
     await addDoc(chirrupRef, chirrup);
   }
 }

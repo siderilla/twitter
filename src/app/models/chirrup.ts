@@ -1,10 +1,12 @@
+import { Timestamp } from "firebase/firestore";
+
 export interface Chirrup {
     
     id?: string;
     userId: string;
     userEmail: string;
     text: string;
-    createdAt: Date;
+    creationTime: Timestamp;
 
     location?: {
         lat: number;

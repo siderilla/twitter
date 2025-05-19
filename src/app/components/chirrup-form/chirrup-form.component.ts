@@ -38,6 +38,7 @@ export class ChirrupFormComponent {
   addChirrup() {
     this.chirrupService.addChirrup(this.chirrup)
       .then(() => {
+        this.chirrup = ''; // Reset the input field after adding the chirrup
         console.log('Chirrup added successfully');
         this.router.navigate(['/list']);
       })

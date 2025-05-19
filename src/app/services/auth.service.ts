@@ -10,12 +10,19 @@ import { updateProfile } from 'firebase/auth';
 export class AuthService {
   private auth = inject(Auth);
   user = signal<User | null>(null);
-  loading = signal(true); // aggiungi questo
+  isAuthorized = signal(false); // aggiungi questo
 
   constructor() {
     onAuthStateChanged(this.auth, (user) => {
-      this.user.set(user);
-      this.loading.set(false); // utente caricato
+      if (user) {
+        console.log('User is signed in:', user);
+        this.isAuthorized.set(true);
+        this.user.set(user);
+      } else {
+        console.log('Onii-chan, please sign in');
+        this.isAuthorized.set(false);
+        this.user.set(null);
+      }
     });
   }
 
