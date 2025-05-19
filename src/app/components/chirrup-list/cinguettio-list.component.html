@@ -1,0 +1,13 @@
+<div class="list">
+	<mat-card class="cinguettio-card" *ngFor="let cinguettio of cinguettioService.cinguettii()">
+		<mat-card-content>
+			<p>{{ cinguettio.text }}</p>
+			<p class="info">di {{ cinguettio.userEmail }} • {{ cinguettio.creationTime.toDate() | date:'short' }}</p>
+		</mat-card-content>
+	</mat-card>
+
+
+	<ng-container *ngIf="authService.isAuthorized()">
+		<app-cinguettio-form></app-cinguettio-form>
+	</ng-container>
+</div>

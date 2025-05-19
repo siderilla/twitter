@@ -1,5 +1,5 @@
 <div class="navbar">
-    <h1>Chirrup</h1>
+    <h1>Cinguettii</h1>
     <p *ngIf="authService.user()">
         Bentornato, {{ authService.user()?.displayName || authService.user()?.email }}!
     </p>
@@ -7,11 +7,11 @@
         Per favore, accedi per continuare.
     </p>
 </div>
-<div class="add-chirrup">
+<div class="add-cinguettio">
     <mat-form-field>
-        <mat-label>Chirp chirp</mat-label>
-        <textarea matInput [(ngModel)]="chirrup"></textarea> 
+        <mat-label>Cip cip</mat-label>
+        <textarea matInput [(ngModel)]="cinguettio"></textarea> 
         <!-- ngModel chiama chirrup per visualizzare il testo bananainthebox è input/output -->
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="addChirrup()">Post</button>
+    <button mat-raised-button color="primary" (click)="addCinguettio()">Post</button>
 </div>

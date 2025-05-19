@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ChirrupService } from './chirrup.service';
+import { ChirrupService } from './cinguettio.service';
 
 describe('ChirrupService', () => {
   let service: ChirrupService;

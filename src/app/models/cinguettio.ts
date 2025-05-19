@@ -1,6 +1,6 @@
 import { Timestamp } from "firebase/firestore";
 
-export interface Chirrup {
+export interface Cinguettio {
     
     id?: string;
     userId: string;

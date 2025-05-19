@@ -5,21 +5,21 @@ import { AuthService } from '../../services/auth.service';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
-import { ChirrupService } from '../../services/chirrup.service';
+import { CinguettioService } from '../../services/cinguettio.service';
 
 @Component({
-  selector: 'app-chirrup-form',
+  selector: 'app-cinguettio-form',
   imports: [CommonModule, FormsModule, MatInputModule, MatButtonModule],
-  templateUrl: './chirrup-form.component.html',
-  styleUrl: './chirrup-form.component.scss'
+  templateUrl: './cinguettio-form.component.html',
+  styleUrl: './cinguettio-form.component.scss'
 })
-export class ChirrupFormComponent {
+export class CinguettioFormComponent {
 
   authService = inject(AuthService);
-  chirrupService = inject(ChirrupService);
+  cinguettioService = inject(CinguettioService);
   router = inject(Router);
 
-  chirrup = '';
+  cinguettio = '';
 
 
   logout() {
@@ -35,15 +35,15 @@ export class ChirrupFormComponent {
     });
   }
 
-  addChirrup() {
-    this.chirrupService.addChirrup(this.chirrup)
+  addCinguettio() {
+    this.cinguettioService.addCinguettio(this.cinguettio)
       .then(() => {
-        this.chirrup = ''; // Reset the input field after adding the chirrup
-        console.log('Chirrup added successfully');
+        this.cinguettio = ''; // Reset the input field after adding the chirrup
+        console.log('Cinguettio added successfully');
         this.router.navigate(['/list']);
       })
       .catch((error) => {
-        console.error('Error adding chirrup', error);
+        console.error('Error adding cinguettio', error);
       });
   }
 

@@ -1,10 +1,15 @@
-<div class="navbar">
-    <div class="navbar-actions">
-        @if (!authService.isAuthorized()) {
-            <button mat-button (click)="login()">Login</button>
-        } @else {
-            <button mat-button (click)="logout()">Logout</button>
-        }
-        <button mat-button (click)="register()">Register</button>
-    </div>
-</div>
+<mat-toolbar color="primary">
+	<span class="title" routerLink="/list">🦜 Cinguettii</span>
+	<span class="spacer"></span>
+
+	<ng-container *ngIf="isLoggedIn; else loggedOut">
+		<button mat-icon-button (click)="logout()" aria-label="Logout">
+			<mat-icon>logout</mat-icon>
+		</button>
+	</ng-container>
+
+	<ng-template #loggedOut>
+		<button mat-button *ngIf="!isLoginPage" routerLink="/login">Login</button>
+		<button mat-button *ngIf="!isRegistrationPage" routerLink="/registration">Registrati</button>
+	</ng-template>
+</mat-toolbar>

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChirrupItemComponent } from './chirrup-item.component';
+import { CinguettioListComponent } from './cinguettio-list.component';
 
-describe('ChirrupItemComponent', () => {
-  let component: ChirrupItemComponent;
-  let fixture: ComponentFixture<ChirrupItemComponent>;
+describe('CinguettioListComponent', () => {
+  let component: CinguettioListComponent;
+  let fixture: ComponentFixture<CinguettioListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ChirrupItemComponent]
+      imports: [ChirrupListComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ChirrupItemComponent);
+    fixture = TestBed.createComponent(CinguettioListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
