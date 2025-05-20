@@ -15,7 +15,6 @@ export class AuthService {
 	isAuthorized = signal(false);
 	router = inject(Router);
 
-
 	constructor() {
 		onAuthStateChanged(this.auth, (user) => {
 			if (user) {

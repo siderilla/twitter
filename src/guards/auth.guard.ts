@@ -3,12 +3,15 @@ import { CanActivateFn, Router } from '@angular/router';
 import { inject } from '@angular/core';
 import { AuthService } from '../app/services/auth.service';
 
-export const AuthGuard: CanActivateFn = () => {
+export const AuthGuard: CanActivateFn = async () => {
     const router = inject(Router);
     const authService = inject(AuthService);
 
-    // Blocca l'accesso finché sta caricando lo stato auth
-    if (!authService.isAuthorized() && !authService.user()) {
+    // esempio: isAuthorized() and user() are async
+    const authorized = await authService.isAuthorized();
+    const user = await authService.user();
+
+    if (!authorized && !user) {
         router.navigate(['/login']);
         return false;
     }
