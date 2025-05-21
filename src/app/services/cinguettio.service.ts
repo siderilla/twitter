@@ -6,90 +6,85 @@ import { AuthService } from './auth.service';
 import { LocationService } from './location.service';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class CinguettioService {
 
-  private firestore = inject(Firestore);
-  private authService = inject(AuthService);
-  private locationService = inject(LocationService);
+	private firestore = inject(Firestore);
+	private authService = inject(AuthService);
+	private locationService = inject(LocationService);
 
-  cinguettii = signal<Cinguettio[]>([]);
-  geoCinguettii = computed(() => fromCinguettiiToGeoJSON(this.cinguettii()));
+	cinguettii = signal<Cinguettio[]>([]);
+	geoCinguettii = computed(() => this.fromCinguettiiToGeoJSON(this.cinguettii()));
 
-  constructor() {
+	constructor() {
 
-    const cinguettioRef = collection(this.firestore, 'cinguettii');
-    // const chirrupQuery = query(chirrupRef, orderBy('createdAt', 'desc'));
+		const cinguettioRef = collection(this.firestore, 'cinguettii');
+		// const chirrupQuery = query(chirrupRef, orderBy('createdAt', 'desc'));
 
-    collectionData(cinguettioRef, { idField: 'id' }).subscribe(data => {
-      this.cinguettii.set(data as Cinguettio[]);
-      console.log(this.geoCinguettii());
-    });
+		collectionData(cinguettioRef, { idField: 'id' }).subscribe(data => {
+			this.cinguettii.set(data as Cinguettio[]);
+			console.log(this.geoCinguettii());
+		});
 
-  }
+	}
 
-  async addCinguettio(text: string, location?: { lat: number, lng: number }) {
-    const user = this.authService.user();
-    if (!user) return;
+	async addCinguettio(text: string) {
+		const user = this.authService.user();
+		if (!user) return;
 
-    const cinguettio: any = {
-      text: text,
-      userId: user.uid,
-      userEmail: user.email || '',
-      creationTime: Timestamp.now()
-    };
+		let location = null;
 
-    this.locationService.getLocation()
-      .then((location) => {
-        cinguettio.location = {
-          lat: location.coords.latitude,
-          lng: location.coords.longitude
-        };
-        console.log('Location:', cinguettio.location);
-      })
-      .catch((error) => {
-        console.error('Error getting location', error);
-      });
+		try {
+			location = await this.locationService.getLocation();
+		} catch (err) {
+			console.warn('📍 Geolocalizzazione fallita, si prosegue senza', err);
+		}
 
-    // if (location) {
-    //   cinguettio.location = {
-    //     lat: location.lat,
-    //     lng: location.lng
-    //   };
-    // }
+		const cinguettio: Cinguettio = {
+			text,
+			userId: user.uid,
+			userEmail: user.email || '',
+			creationTime: Timestamp.now(),
+			...(location && {
+				location: {
+					lat: location.coords.latitude,
+					lng: location.coords.longitude
+				}
+			})
+		};
 
+		const ref = collection(this.firestore, 'cinguettii');
+		await addDoc(ref, cinguettio);
 
-    const cinguettioRef = collection(this.firestore, 'cinguettii');
-    await addDoc(cinguettioRef, cinguettio);
+	}
 
-  }
+	fromCinguettiiToGeoJSON(cinguettii: Cinguettio[]): any {
+		const emptyGeoJSON: any = {
+			type: 'FeatureCollection',
+			features: []
+		};
+		for (const cinguettio of cinguettii) {
+			if (cinguettio.location) {
+				const feature = {
+					type: 'Feature',
+					properties: {
+						text: cinguettio.text,
+						userId: cinguettio.userId,
+						userEmail: cinguettio.userEmail,
+						creationTime: cinguettio.creationTime.toDate()
+					},
+					geometry: {
+						type: 'Point',
+						coordinates: [cinguettio.location.lng, cinguettio.location.lat]
+					}
+				};
+				emptyGeoJSON.features.push(feature);
+			}
+		}
 
-}
-function fromCinguettiiToGeoJSON(cinguettii: Cinguettio[]): any {
-  const emptyGeoJSON: any = {
-    type: 'FeatureCollection',
-    features: []
-  };
-  for (const cinguettio of cinguettii) {
-    if (cinguettio.location) {
-      const feature = {
-        type: 'Feature',
-        properties: {
-          text: cinguettio.text,
-          userId: cinguettio.userId,
-          userEmail: cinguettio.userEmail,
-          creationTime: cinguettio.creationTime.toDate()
-        },
-        geometry: {
-          type: 'Point',
-          coordinates: [cinguettio.location.lng, cinguettio.location.lat]
-        }
-      };
-      emptyGeoJSON.features.push(feature);
-    }
-  }
+		console.log(JSON.stringify(emptyGeoJSON));
+		return emptyGeoJSON;
+	}
 
-  console.log(JSON.stringify(emptyGeoJSON));
-  return emptyGeoJSON;
 }

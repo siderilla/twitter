@@ -7,10 +7,11 @@ import { Router } from '@angular/router';
 import { CinguettioService } from '../../services/cinguettio.service';
 import { CinguettioFormComponent } from '../chirrup-form/cinguettio-form.component';
 import { MatCardModule } from '@angular/material/card';
+import { MapComponent } from "../map/map.component";
 
 @Component({
 	selector: 'app-cinguettio-list',
-	imports: [CommonModule, MatButtonModule, MatInputModule, CinguettioFormComponent, MatCardModule],
+	imports: [CommonModule, MatButtonModule, MatInputModule, CinguettioFormComponent, MatCardModule, MapComponent],
 	templateUrl: './cinguettio-list.component.html',
 	styleUrl: './cinguettio-list.component.scss'
 })
