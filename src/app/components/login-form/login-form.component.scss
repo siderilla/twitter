@@ -17,7 +17,7 @@
 	width: 100%;
 	max-width: 400px;
 	text-align: center;
-	color: black;
+	color: rgb(56, 56, 56);
 }
 
 mat-form-field {
@@ -32,7 +32,7 @@ mat-form-field {
 button {
 	margin: 0.5rem 0.5rem 0 0.5rem;
 	min-width: 120px;
-	text-transform: none;
+	text-transform:capitalize
 }
 
 .error-message {
@@ -51,8 +51,16 @@ button {
 .logo {
 	width: 160px;
 	max-width: 80%;
-	margin-left: -10rem; // Spostalo leggermente a sinistra
+	margin-left: -10em;
+	animation: floaty 3s ease-in-out infinite;
 }
+
+@keyframes floaty {
+	0%   { transform: translateY(0); }
+	50%  { transform: translateY(-10px); }
+	100% { transform: translateY(0); }
+}
+
 
 @media (max-width: 480px) {
 	.logo {
