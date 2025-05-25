@@ -43,7 +43,8 @@
     left: -290px;
     width: 250px;
     height: 100%;
-    background: #ffffff;
+    background-color: #1e1e1e;
+    color: #ffffff;
     padding: 1rem;
     transition: left 0.3s ease-out;
     z-index: 999;
@@ -53,21 +54,33 @@
     }
 
     .user-profile {
-        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
 
         .avatar {
-            width: 80px;
-            height: 80px;
+            width: 72px;
+            height: 72px;
             border-radius: 50%;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
+            object-fit: cover;
         }
 
-        button {
-            display: block;
-            margin: 0.5rem auto;
+        h3 {
+            font-size: 1rem;
+            margin: 0.25rem 0;
+            color: #3f3f3f;
         }
     }
+
+
+    button {
+        display: block;
+        margin: 0.5rem auto;
+    }
 }
+
 
 .sidenav-backdrop {
     position: fixed;
@@ -113,29 +126,36 @@ body {
 }
 
 .sidenav-button {
-    display: block;
-    margin: 0.5rem auto;
-    padding: 0.5rem 1.5rem;
-    min-width: 120px;
-    font-weight: 600;
-    font-size: 1rem;
-    border-radius: 24px;
-    text-transform: none;
-    background-color: #007c85;
-    color: white;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.4rem 1.2rem;
+  margin: 0.5rem auto;
+  min-width: 160px;
+  border-radius: 20px;
+  text-transform: none;
+  background-color: #007c85;
+  color: white;
+
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    background-color: #0098a4;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  }
+
+  &.warn {
+    background-color: #ffa600;
+    color: #1f1f1f;
 
     &:hover {
-        background-color: #0098a4;
-        transform: translateY(-2px);
+      background-color: #ffb733;
     }
-
-    &.warn {
-        background-color: #ffa600;
-        color: #1f1f1f;
-
-        &:hover {
-            background-color: #ffb733;
-        }
-    }
+  }
 }
+
