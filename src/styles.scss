@@ -2,3 +2,11 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root {
+  --color-primary: #007c85;     // verde acqua scuro
+  --color-accent: #ffa600;      // arancio brillante
+  --color-bg-dark: #1f1f1f;     // sfondo scuro
+  --color-text-light: #f5f5f5;  // testo chiaro
+  --color-warn: #e53935;        // rosso di errore
+}

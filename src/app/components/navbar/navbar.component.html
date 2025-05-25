@@ -1,6 +1,16 @@
 <mat-toolbar color="primary">
-	<span class="title" routerLink="/list">🦜 Cinguettii</span>
+	<span class="title" routerLink="/list">
+		<img src="assets/parrots.png" alt="cinguetto" class="logo" />
+	</span>
+
 	<span class="spacer"></span>
+
+	<span *ngIf="authService.user()">
+		Bentornato, {{ authService.user()?.displayName || authService.user()?.email }}!
+	</span>
+
+	<span class="spacer"></span>
+
 
 	<ng-container *ngIf="isLoggedIn; else loggedOut">
 		<button mat-icon-button (click)="logout()" aria-label="Logout">

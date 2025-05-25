@@ -5,7 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { CinguettioService } from '../../services/cinguettio.service';
-import { CinguettioFormComponent } from '../chirrup-form/cinguettio-form.component';
+import { CinguettioFormComponent } from '../cinguettio-form/cinguettio-form.component';
 import { MatCardModule } from '@angular/material/card';
 import { MapComponent } from "../map/map.component";
 

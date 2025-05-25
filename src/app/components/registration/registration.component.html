@@ -1,22 +1,25 @@
-<img src="assets/parrot.png" alt="Logo Chirrup" class="logo" />
+<div class="logo-wrapper">
+	<img src="assets/parrots.png" alt="cinguetto" class="logo" />
+</div>
 
 <div class="form-container">
-    <mat-form-field>
-        <mat-label>Username</mat-label>
-        <input [(ngModel)]="username" matInput type="text" />
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>E-mail</mat-label>
-        <input [(ngModel)]="email" matInput type="email" />
-    </mat-form-field>
+	<mat-form-field>
+		<mat-label>Username</mat-label>
+		<input [(ngModel)]="username" matInput type="text" />
+	</mat-form-field>
 
-    <mat-form-field>
-        <mat-label>Password</mat-label>
-        <input [(ngModel)]="password" matInput type="password" />
-    </mat-form-field>
+	<mat-form-field>
+		<mat-label>E-mail</mat-label>
+		<input [(ngModel)]="email" matInput type="email" />
+	</mat-form-field>
 
-    <div *ngIf="errorMessage" class="error-message">
-        {{ errorMessage }}
-    </div>
-    <button mat-raised-button color="warn" (click)="register()">Register</button>
+	<mat-form-field>
+		<mat-label>Password</mat-label>
+		<input [(ngModel)]="password" matInput type="password" />
+	</mat-form-field>
+
+	<div *ngIf="errorMessage" class="error-message">
+		{{ errorMessage }}
+	</div>
+	<button mat-raised-button color="warn" (click)="register()">Register</button>
 </div>

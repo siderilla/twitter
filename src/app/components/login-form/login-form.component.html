@@ -1,20 +1,23 @@
-<img src="assets/parrot.png" alt="Logo cinguettio" class="logo" />
+<div class="logo-wrapper">
+	<img src="assets/parrots.png" alt="Logo cinguettio" class="logo" />
+	<h1 class="title-cinguetto">Cinguetto</h1>
+</div>
 
 <div class="form-container">
-    <mat-form-field>
-        <mat-label>E-mail</mat-label>
-        <input [(ngModel)]="email" matInput type="email" />
-    </mat-form-field>
+	<mat-form-field>
+		<mat-label>E-mail</mat-label>
+		<input [(ngModel)]="email" matInput type="email" />
+	</mat-form-field>
 
-    <mat-form-field>
-        <mat-label>Password</mat-label>
-        <input [(ngModel)]="password" matInput type="password" />
-    </mat-form-field>
+	<mat-form-field>
+		<mat-label>Password</mat-label>
+		<input [(ngModel)]="password" matInput type="password" />
+	</mat-form-field>
 
-    <div *ngIf="errorMessage" class="error-message">
-        {{ errorMessage }}
-    </div>
+	<div *ngIf="errorMessage" class="error-message">
+		{{ errorMessage }}
+	</div>
 
-    <button mat-raised-button color="primary" (click)="login()">Login</button>
-    <button mat-raised-button color="warn" (click)="register()">Register</button>
+	<button mat-raised-button color="primary" (click)="login()">Login</button>
+	<button mat-raised-button color="warn" (click)="register()">Register</button>
 </div>

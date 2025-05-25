@@ -1,35 +1,72 @@
 :host {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: #006eff;
-    font-family: 'Segoe UI', Roboto, sans-serif;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background: #33b7c0;
+	font-family: 'Segoe UI', Roboto, sans-serif;
+	color: var(--color-text-light);
 }
 
 .form-container {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
+	background-color: #ffffff;
+	padding: 2rem;
+	border-radius: 16px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+	width: 100%;
+	max-width: 400px;
+	text-align: center;
+	color: black;
 }
 
 mat-form-field {
-    width: 100%;
-    margin-bottom: 1rem;
+	width: 100%;
+	margin-bottom: 1rem;
+
+	input {
+		color: var(--color-text-light);
+	}
 }
 
 button {
-    margin: 0.5rem 0.5rem 0 0.5rem;
-    min-width: 120px;
+	margin: 0.5rem 0.5rem 0 0.5rem;
+	min-width: 120px;
+	text-transform: none;
 }
 
 .error-message {
-    color: #e53935;
-    font-weight: 500;
-    margin-top: 1rem;
+	color: var(--color-warn);
+	font-weight: 500;
+	margin-top: 1rem;
+}
+
+.logo-wrapper {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-bottom: -3rem; // Avvicina il logo al form
+}
+
+.logo {
+	width: 160px;
+	max-width: 80%;
+	margin-left: -10rem; // Spostalo leggermente a sinistra
+}
+
+@media (max-width: 480px) {
+	.logo {
+		width: 120px;
+		margin-left: -1rem;
+	}
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.title-cinguetto {
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+  margin-left: 2rem;
+  font-size: 400%
 }

@@ -25,7 +25,7 @@ export class MapComponent {
       }
 
       this.map = L.map('map').setView([44.4, 8.9], 10);
-
+	  setTimeout(() => this.map?.invalidateSize(), 100);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
       }).addTo(this.map);
