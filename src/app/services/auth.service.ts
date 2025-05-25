@@ -34,7 +34,6 @@ export class AuthService {
 		});
 	}
 
-
 	register(email: string, userName: string, password: string) {
 		return from(
 			createUserWithEmailAndPassword(this.auth, email, password)

@@ -1,8 +1,4 @@
 <div class="list">
-	<ng-container *ngIf="authService.isAuthorized()">
-		<app-cinguettio-form></app-cinguettio-form>
-	</ng-container>
-
 	<mat-card class="cinguettio-card" *ngFor="let cinguettio of cinguettioService.cinguettii()">
 		<mat-card-content>
 			<p>{{ cinguettio.text }}</p>
@@ -10,4 +6,3 @@
 		</mat-card-content>
 	</mat-card>
 </div>
-<app-map></app-map>

@@ -9,6 +9,7 @@
 }
 
 .add-cinguettio {
+	margin-top: 4rem;
 	background-color: #292929;
 	padding: 1.5rem 2rem;
 	border-radius: 16px;
@@ -36,5 +37,14 @@
 		text-transform: none;
 		background-color: var(--color-primary);
 		color: white;
+	}
+
+	button[color="primary"] {
+		background-color: #007c85;
+		color: white;
+
+		&:hover {
+			background-color: #0098a4;
+		}
 	}
 }

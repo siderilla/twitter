@@ -1,0 +1,26 @@
+<div class="custom-toolbar" [class.visible]="showToolbar">
+    <button mat-icon-button class="hamburger" (click)="toggleSidenav()" aria-label="Apri menu">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span class="welcome-text" [class.fade-out]="!showWelcomeText">
+        Bentornato, {{ authService.user()?.displayName || authService.user()?.email }}!
+    </span>
+
+</div>
+
+<div class="custom-sidenav" [class.open]="isSidenavOpen">
+    <div class="user-profile">
+        <img [src]="authService.user()?.photoURL || 'assets/default-avatar.png'" class="avatar" />
+        <h3>{{ authService.user()?.displayName || authService.user()?.email }}</h3>
+        <button mat-button class="edit-button" (click)="editProfile()">Modifica impostazioni</button>
+        <button mat-button class="logout" (click)="logout()">Logout</button>
+    </div>
+</div>
+
+<div class="sidenav-backdrop" *ngIf="isSidenavOpen" (click)="toggleSidenav()"></div>
+
+<div class="page-content">
+    <app-cinguettio-form></app-cinguettio-form>
+    <app-cinguettio-list></app-cinguettio-list>
+    <app-map></app-map>
+</div>

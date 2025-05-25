@@ -1,80 +1,115 @@
 :host {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
-	background: #33b7c0;
-	font-family: 'Segoe UI', Roboto, sans-serif;
-	color: var(--color-text-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #33b7c0;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    color: var(--color-text-light);
 }
 
 .form-container {
-	background-color: #ffffff;
-	padding: 2rem;
-	border-radius: 16px;
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-	width: 100%;
-	max-width: 400px;
-	text-align: center;
-	color: rgb(56, 56, 56);
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    color: rgb(56, 56, 56);
 }
 
 mat-form-field {
-	width: 100%;
-	margin-bottom: 1rem;
+    width: 100%;
+    margin-bottom: 1rem;
 
-	input {
-		color: var(--color-text-light);
-	}
+    input {
+        color: var(--color-text-light);
+    }
 }
 
-button {
-	margin: 0.5rem 0.5rem 0 0.5rem;
-	min-width: 120px;
-	text-transform:capitalize
+button[mat-raised-button] {
+    margin: 0.5rem;
+    min-width: 120px;
+    text-transform: capitalize;
+    font-weight: 600;
+    border-radius: 24px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
 }
+
+button[color="primary"] {
+    background-color: #007c85;
+    color: white;
+
+    &:hover {
+        background-color: #0098a4;
+    }
+}
+
+button[color="warn"] {
+    background-color: #ffa600;
+    color: #1f1f1f;
+
+    &:hover {
+        background-color: #ffb733;
+    }
+}
+
 
 .error-message {
-	color: var(--color-warn);
-	font-weight: 500;
-	margin-top: 1rem;
+    color: var(--color-warn);
+    font-weight: 500;
+    margin-top: 1rem;
 }
 
 .logo-wrapper {
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	margin-bottom: -3rem; // Avvicina il logo al form
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: -3rem; // Avvicina il logo al form
 }
 
 .logo {
-	width: 160px;
-	max-width: 80%;
-	margin-left: -10em;
-	animation: floaty 3s ease-in-out infinite;
+    width: 160px;
+    max-width: 80%;
+    margin-left: -10em;
+    animation: floaty 3s ease-in-out infinite;
 }
 
 @keyframes floaty {
-	0%   { transform: translateY(0); }
-	50%  { transform: translateY(-10px); }
-	100% { transform: translateY(0); }
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
 
 
 @media (max-width: 480px) {
-	.logo {
-		width: 120px;
-		margin-left: -1rem;
-	}
+    .logo {
+        width: 120px;
+        margin-left: -1rem;
+    }
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 .title-cinguetto {
-  font-family: "Pacifico", cursive;
-  font-weight: 400;
-  font-style: normal;
-  margin-left: 2rem;
-  font-size: 400%
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+    margin-left: 2rem;
+    font-size: 400%
 }

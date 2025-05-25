@@ -5,13 +5,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { CinguettioService } from '../../services/cinguettio.service';
-import { CinguettioFormComponent } from '../cinguettio-form/cinguettio-form.component';
 import { MatCardModule } from '@angular/material/card';
-import { MapComponent } from "../map/map.component";
 
 @Component({
 	selector: 'app-cinguettio-list',
-	imports: [CommonModule, MatButtonModule, MatInputModule, CinguettioFormComponent, MatCardModule, MapComponent],
+	imports: [CommonModule, MatButtonModule, MatInputModule, MatCardModule],
 	templateUrl: './cinguettio-list.component.html',
 	styleUrl: './cinguettio-list.component.scss'
 })
