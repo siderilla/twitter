@@ -10,10 +10,11 @@
 
 <div class="custom-sidenav" [class.open]="isSidenavOpen">
     <div class="user-profile">
-        <img [src]="authService.user()?.photoURL || 'assets/default-avatar.png'" class="avatar" />
+        <img [src]="authService.user()?.photoURL || 'assets/default.png'" class="avatar" />
         <h3>{{ authService.user()?.displayName || authService.user()?.email }}</h3>
-        <button mat-button class="edit-button" (click)="editProfile()">Modifica impostazioni</button>
-        <button mat-button class="logout" (click)="logout()">Logout</button>
+        <button mat-button class="sidenav-button" (click)="editProfile()">Modifica impostazioni</button>
+        <button mat-button class="sidenav-button warn" (click)="logout()">Logout</button>
+
     </div>
 </div>
 
